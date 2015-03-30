@@ -3,9 +3,7 @@ package 성적처리v02;
 import control.CGangjwaControl;
 import control.CGwamokControl;
 import control.CLoginControl;
-import data_access_object.CGangjwaDAO;
-import data_access_object.CGwamokDAO;
-import data_access_object.CMemberDAO;
+import data_access_object.DAO;
 import entity.CGwamok;
 import entity.CGangjwa;
 import entity.CMember;
@@ -36,8 +34,9 @@ public class CMain {
 		
 		//persistent storage에 써라
 		//entity
-		CMemberDAO memberDAO = new CMemberDAO();
-		memberDAO.write(member);  //씀 
+		DAO memberDAO = new DAO();
+		memberDAO.write(member, "member");  //씀 
+		member = (CMember)memberDAO.read("member");
 		System.out.println("");
 		
 		//과목개설
@@ -47,19 +46,20 @@ public class CMain {
 		CGwamokControl gwamokControl = new CGwamokControl();
 		gwamok = gwamokControl.processGwamok(gwamok);
 		
-		CGangjwaDAO gwamokDAO = new CGangjwaDAO();
-		CGwamokDAO.write(gwamok);
-		System.out.println("");
+		DAO gwamokDAO = new DAO();
+		DAO.write(gwamok, "gwamok");
+		gwamok = (CGwamok)gwamokDAO.read("gwamok");  //강제로 자식type으로 변환(type cast라고 함)
 		
-		//과목개설
+		//강좌개설
 		CGangjwaView gangjwaView = new CGangjwaView();
 		CGangjwa gangjwa = gangjwaView.getGangjwa();
 			
 		CGangjwaControl gangjwaControl = new CGangjwaControl();
 		gangjwa = gangjwaControl.processGangjwa(gangjwa);
 				
-		CGangjwaDAO gangjwaDAO = new CGangjwaDAO();
-		CGangjwaDAO.write(gangjwa);
+		DAO gangjwaDAO = new DAO();
+		DAO.write(gangjwa, "gangjwa");
+		gangjwa = (CGangjwa)gangjwaDAO.read("gangjwa");
 		
 	}
 
