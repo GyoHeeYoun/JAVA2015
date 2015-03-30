@@ -23,6 +23,7 @@ public class CMain {
 		
 		
 		//전부 로그인
+		//수정
 		//view
 		CLoginView loginView = new CLoginView();
 		//value object
