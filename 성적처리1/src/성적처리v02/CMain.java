@@ -3,18 +3,21 @@ package 성적처리v02;
 import control.CGangjwaControl;
 import control.CGwamokControl;
 import control.CLoginControl;
-import data_access_object.DAO;
+import control.CSugangsinchungControl;
+import data_access_object.IDAO;
+import data_access_object.ObjectDAO;
 import entity.CGwamok;
 import entity.CGangjwa;
 import entity.CMember;
+import entity.CSugangsinchung;
 import view.CGangjwaView;
 import view.CGwamokView;
 import view.CLoginView;
+import view.CSugangsinchungView;
 
 public class CMain {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		//mvc pattern: 3 계층
 		//3 계층 사이를 member라는 object가 만들여저서 왔다갔다함
 		//이런 종류의 object를 value object라고함
@@ -34,8 +37,8 @@ public class CMain {
 		
 		//persistent storage에 써라
 		//entity
-		DAO memberDAO = new DAO();
-		memberDAO.write(member, "member");  //씀 
+		IDAO memberDAO = new ObjectDAO();
+		IDAO.write(member, "member");  //씀 
 		member = (CMember)memberDAO.read("member");
 		System.out.println("");
 		
@@ -46,8 +49,8 @@ public class CMain {
 		CGwamokControl gwamokControl = new CGwamokControl();
 		gwamok = gwamokControl.processGwamok(gwamok);
 		
-		DAO gwamokDAO = new DAO();
-		DAO.write(gwamok, "gwamok");
+		IDAO gwamokDAO = new ObjectDAO();
+		IDAO.write(gwamok, "gwamok");
 		gwamok = (CGwamok)gwamokDAO.read("gwamok");  //강제로 자식type으로 변환(type cast라고 함)
 		
 		//강좌개설
@@ -57,9 +60,20 @@ public class CMain {
 		CGangjwaControl gangjwaControl = new CGangjwaControl();
 		gangjwa = gangjwaControl.processGangjwa(gangjwa);
 				
-		DAO gangjwaDAO = new DAO();
-		DAO.write(gangjwa, "gangjwa");
+		IDAO gangjwaDAO = new ObjectDAO();
+		IDAO.write(gangjwa, "gangjwa");
 		gangjwa = (CGangjwa)gangjwaDAO.read("gangjwa");
+		
+		//수강신청
+		CSugangsinchungView sugangsinchungView = new CSugangsinchungView();
+		CSugangsinchung sugangsinchung = sugangsinchungView.getSugangsinchung();
+		
+		CSugangsinchungControl sugangsinchungControl = new CSugangsinchungControl();
+		sugangsinchung = sugangsinchungControl.processSugangsinchung(sugangsinchung);
+		
+		IDAO sugangsinchungDAO = new ObjectDAO();
+		IDAO.write(sugangsinchung, "testOut");
+		sugangsinchung = (CSugangsinchung)sugangsinchungDAO.read("testOut");
 		
 	}
 
