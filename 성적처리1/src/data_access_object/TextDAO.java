@@ -10,20 +10,14 @@ import entity.CEntity;
 public class TextDAO implements IDAO{
 
 	@Override
-	public Object read(Class clazz, String fileName) {
+	public Object read(CEntity entity, String fileName) {
 		// TODO Auto-generated method stub
 		try {
 			Scanner scanner = new Scanner(new File(fileName));
-			CEntity entity = (CEntity)clazz.newInstance();
+
 			entity.read(scanner);
 			return entity;
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (InstantiationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IllegalAccessException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -33,6 +27,6 @@ public class TextDAO implements IDAO{
 	
 	public void write(Object object, String fileName) {
 		// TODO Auto-generated method stub
-		java.lang.reflect.Field[] fields = object.getClass().getFields();
+		//java.lang.reflect.Field[] fields = object.getClass().getFields();
 	}
 }

@@ -6,7 +6,7 @@ import java.util.Scanner;
 // Entity class or Value class
 //속성으로만 구성되있음
 //자바에서는 속성을 절대 public으로 놓지 않음.
-public class CMember implements Serializable{
+public class CMember extends CEntity implements Serializable{
 	
 	//data의 value를 중심으로 정의됨
 	//data를 저장하기 위한 class
