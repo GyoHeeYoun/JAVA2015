@@ -6,6 +6,7 @@ import control.CLoginControl;
 import control.CSugangsinchungControl;
 import data_access_object.IDAO;
 import data_access_object.ObjectDAO;
+import data_access_object.TextDAO;
 import entity.CGwamok;
 import entity.CGangjwa;
 import entity.CMember;
@@ -23,25 +24,20 @@ public class CMain {
 		//이런 종류의 object를 value object라고함
 		
 		
-		//전부 로그인
-		//수정
-		//view
 		CLoginView loginView = new CLoginView();
-		//value object
 		CMember member = loginView.login();   //키보드에서 읽음
-		
-		//control
+
 		CLoginControl loginControl = new CLoginControl();   //읽은 것을 판단
-		//logincontrol에게 줌(암호화됨)
 		member = loginControl.login(member); //가공해주는 애
 		
 		//persistent storage에 써라
 		//entity
 		IDAO memberDAO = new ObjectDAO();
-		IDAO.write(member, "member");  //씀 
-		member = (CMember)memberDAO.read("member");
+		//memberDAO.write(member, "member");  //씀 
+		//CMember member = new CMember();
+		member = (CMember)memberDAO.read(member.getClass(), "member.txt");
 		System.out.println("");
-		
+	/*	
 		//과목개설
 		CGwamokView gwamokView = new CGwamokView();
 		CGwamok gwamok = CGwamokView.getGwamok();
@@ -50,7 +46,7 @@ public class CMain {
 		gwamok = gwamokControl.processGwamok(gwamok);
 		
 		IDAO gwamokDAO = new ObjectDAO();
-		IDAO.write(gwamok, "gwamok");
+		//gwamokDAO.write(gwamok, "gwamok");
 		gwamok = (CGwamok)gwamokDAO.read("gwamok");  //강제로 자식type으로 변환(type cast라고 함)
 		
 		//강좌개설
@@ -61,9 +57,10 @@ public class CMain {
 		gangjwa = gangjwaControl.processGangjwa(gangjwa);
 				
 		IDAO gangjwaDAO = new ObjectDAO();
-		IDAO.write(gangjwa, "gangjwa");
+		//gangjwaDAO.write(gangjwa, "gangjwa");
 		gangjwa = (CGangjwa)gangjwaDAO.read("gangjwa");
 		
+		/*
 		//수강신청
 		CSugangsinchungView sugangsinchungView = new CSugangsinchungView();
 		CSugangsinchung sugangsinchung = sugangsinchungView.getSugangsinchung();
@@ -72,9 +69,9 @@ public class CMain {
 		sugangsinchung = sugangsinchungControl.processSugangsinchung(sugangsinchung);
 		
 		IDAO sugangsinchungDAO = new ObjectDAO();
-		IDAO.write(sugangsinchung, "testOut");
+		sugangsinchungDAO.write(sugangsinchung, "testOut");
 		sugangsinchung = (CSugangsinchung)sugangsinchungDAO.read("testOut");
-		
+		*/
 	}
 
 }

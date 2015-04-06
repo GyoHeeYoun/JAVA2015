@@ -7,7 +7,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class ObjectDAO implements IDAO{
-	public Object read(String fileName)
+	public Object read(Class clazz, String fileName)
 	{
 		Object object = null;
 		try {
@@ -23,7 +23,7 @@ public class ObjectDAO implements IDAO{
 		return object;
 	}
 	
-	public static void write(Object object, String fileName) {
+	public void write(Object object, String fileName) {
 		// TODO Auto-generated method stub
 		
 		//°ú¸ñ write

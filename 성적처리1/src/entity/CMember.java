@@ -1,6 +1,7 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.Scanner;
 
 // Entity class or Value class
 //속성으로만 구성되있음
@@ -36,5 +37,13 @@ public class CMember implements Serializable{
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	public void read(Scanner scanner){
+		userID = scanner.next();
+		password = scanner.next();
+	};
+	
+	public void write(){
+		
+	};
 
 }

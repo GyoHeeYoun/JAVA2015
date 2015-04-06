@@ -55,12 +55,12 @@ public class CGangjwa extends CEntity{
 	
 	
 	@Override
-	void read() {
+	public void read() {
 		// TODO Auto-generated method stub
 		
 	}
 	@Override
-	void write() {
+	public void write() {
 		// TODO Auto-generated method stub
 		
 	}

@@ -1,9 +1,11 @@
 package entity;
 
 import java.io.Serializable;
+import java.util.Scanner;
 
 abstract public class CEntity implements Serializable{
-	abstract void read();
+	public void read(Scanner scanner){};
 	
-	abstract void write();
+	public void write(){};
+	
 }
