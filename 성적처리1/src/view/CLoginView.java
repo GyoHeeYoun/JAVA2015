@@ -4,15 +4,14 @@ package view;
 
 import entity.CMember;
 
-public class CLoginView {
+public class CLoginView extends CView{
 	
-	public CMember login() {
-		CMember member = new CMember();
+	public void login() {
+		CMember member = new CMember(); // entity
 		
 		member.setUserID("gyohee");
 		member.setPassword("gyoheeeeeee");
-		
-		return member;
+		member = (CMember) this.getControl().process(member); // member∏¶ processing«‘
 	}
 
 }

@@ -9,7 +9,7 @@ import java.io.ObjectOutputStream;
 import entity.CEntity;
 
 public class ObjectDAO implements IDAO{
-	public Object read(CEntity entity, String fileName)
+	public CEntity read(CEntity entity, String fileName)
 	{
 		Object object = null;
 		try {
@@ -22,7 +22,7 @@ public class ObjectDAO implements IDAO{
 			e.printStackTrace();
 		}
 		
-		return object;
+		return entity;
 	}
 	
 	public void write(Object object, String fileName) {

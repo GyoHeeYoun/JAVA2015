@@ -1,4 +1,4 @@
-package 성적처리v02;
+package main;
 
 
 import control.CGwamokControl;
@@ -20,21 +20,17 @@ public class CMain {
 		//3 계층 사이를 member라는 object가 만들여저서 왔다갔다함
 		//이런 종류의 object를 value object라고함
 		
-		
+		//create objects
 		CLoginView loginView = new CLoginView();
-		CMember member = loginView.login();   //키보드에서 읽음
-
 		CLoginControl loginControl = new CLoginControl();   //읽은 것을 판단
-		member = loginControl.login(member); //가공해주는 애
+		IDAO dao = new TextDAO();
 		
-		//persistent storage에 써라
-		//entity
-		IDAO memberDAO = new TextDAO();
-		//memberDAO.write(member, "member");  //씀 
-		//CMember member = new CMember();
-		member = (CMember)memberDAO.read(member, "gangjwa.txt");
-		System.out.println("");
+		//association
+		loginView.setControl(loginControl);
+		loginControl.setDao(dao);
 		
+		//start login
+		loginView.login();  //이게 웹페이지가 됨.
 	}
 
 }

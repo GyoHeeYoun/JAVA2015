@@ -3,7 +3,7 @@ package control;
 import entity.CMember;
 
 //view가 가진 값을 받아서 entity한테 줌
-public class CLoginControl {
+public class CLoginControl extends CControl{
 	private CMember member;
 	
 	
