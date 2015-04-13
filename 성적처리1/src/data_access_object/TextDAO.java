@@ -8,25 +8,40 @@ import entity.CEntity;
 
 
 public class TextDAO implements IDAO{
+	private Scanner scanner;
+	
+	@Override
+	public void connect(String name) throws FileNotFoundException {
+		// TODO Auto-generated method stub
+		this.scanner = new Scanner(new File(name));
+
+	}
 
 	@Override
-	public CEntity read(CEntity entity, String fileName) {
+	public void disconnect() {
 		// TODO Auto-generated method stub
-		try {
-			Scanner scanner = new Scanner(new File(fileName));
-
-			entity.read(scanner);
-			return entity;
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		return null;
+		this.scanner.close();
 	}
 	
-	public void write(Object object, String fileName) {
+	@Override
+	public CEntity read(CEntity entity) {
 		// TODO Auto-generated method stub
-		//java.lang.reflect.Field[] fields = object.getClass().getFields();
+		entity.read(scanner);
+		return entity;
+	}
+	
+	public void write(CEntity entity) {
+		// TODO Auto-generated method stub
+		entity.write(scanner);
+	}
+
+	@Override
+	public void write(Scanner scanner) {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	public boolean hasNext(){
+		return this.scanner.hasNext();
 	}
 }

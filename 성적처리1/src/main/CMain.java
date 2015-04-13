@@ -1,16 +1,9 @@
 package main;
 
 
-import control.CGwamokControl;
 import control.CLoginControl;
 import data_access_object.IDAO;
-import data_access_object.ObjectDAO;
 import data_access_object.TextDAO;
-import entity.CGwamok;
-
-import entity.CMember;
-
-import view.CGwamokView;
 import view.CLoginView;
 
 public class CMain {
@@ -21,15 +14,19 @@ public class CMain {
 		//이런 종류의 object를 value object라고함
 		
 		//create objects
+		
+		//view
 		CLoginView loginView = new CLoginView();
+		//control
 		CLoginControl loginControl = new CLoginControl();   //읽은 것을 판단
+		//dao
 		IDAO dao = new TextDAO();
 		
 		//association
 		loginView.setControl(loginControl);
 		loginControl.setDao(dao);
 		
-		//start login
+		//start program
 		loginView.login();  //이게 웹페이지가 됨.
 	}
 
