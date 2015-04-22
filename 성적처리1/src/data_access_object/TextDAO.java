@@ -35,19 +35,10 @@ public class TextDAO implements IDAO{
 		
 		return null;
 	}
-	
-	public void write(CEntity entity) {
-		// TODO Auto-generated method stub
-		entity.write(scanner);
-	}
 
 	@Override
 	public void write(Scanner scanner) {
 		// TODO Auto-generated method stub
 		
-	}
-	
-	public boolean hasNext(){
-		return this.scanner.hasNext();
 	}
 }

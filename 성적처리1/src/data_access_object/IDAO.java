@@ -10,5 +10,4 @@ public interface IDAO {
 	public void disconnect();
 	public CEntity read(CEntity entity, String ID);
 	public void write(Scanner scanner);
-	public boolean hasNext();
 }

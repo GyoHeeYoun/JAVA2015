@@ -17,7 +17,9 @@ public class CUser extends CEntity implements Serializable{
 		name = scanner.next();
 	};
 	
-	public void write(){
+	@Override
+	public void write(Scanner scanner) {
+		// TODO Auto-generated method stub
 		
 	};
 }

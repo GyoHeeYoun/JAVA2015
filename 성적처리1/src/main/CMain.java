@@ -4,6 +4,7 @@ package main;
 import control.CLoginControl;
 import data_access_object.IDAO;
 import data_access_object.TextDAO;
+import view.CExceptionView;
 import view.CLoginView;
 
 public class CMain {
@@ -15,19 +16,26 @@ public class CMain {
 		
 		//create objects
 		
-		//view
-		CLoginView loginView = new CLoginView();
-		//control
-		CLoginControl loginControl = new CLoginControl();   //읽은 것을 판단
-		//dao
-		IDAO dao = new TextDAO();
-		
-		//association
-		loginView.setControl(loginControl);
-		loginControl.setDao(dao);
-		
 		//start program
-		loginView.login();  //이게 웹페이지가 됨.
+		try {
+			//view
+			CLoginView loginView = new CLoginView();
+			//control
+			CLoginControl loginControl = new CLoginControl();   //읽은 것을 판단
+			//dao
+			IDAO dao = new TextDAO();
+			
+			//association
+			loginView.setControl(loginControl);
+			loginControl.setDao(dao);
+			loginView.login();
+		} catch (Exception e){
+			CExceptionView.processException(e);
+		}
+		
+		  
+		
+		//이게 웹페이지가 됨.
 	}
 
 }
