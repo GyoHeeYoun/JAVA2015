@@ -12,7 +12,7 @@ import exception.UserIDNotFoundException;
 
 public class CLoginView extends CView{
 	
-	public void login() throws FileNotFoundException, UserIDNotFoundException, PasswordNotMatchException {
+	public VUser login() throws FileNotFoundException, UserIDNotFoundException, PasswordNotMatchException {
 		VLogin vLogin = new VLogin(); // entity
 		
 		vLogin.setUserID("id5");
@@ -20,6 +20,7 @@ public class CLoginView extends CView{
 		VUser vUser= (VUser) ((CLoginControl)this.getControl()).login(vLogin); // member∏¶ processing«‘
 		System.out.println("login result : "+vUser.geteLoginResult().toString());
 		
+		return vUser;
 	}
 
 }

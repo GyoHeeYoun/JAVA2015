@@ -2,10 +2,13 @@ package main;
 
 
 import control.CLoginControl;
+import control.CSugangControl;
 import data_access_object.IDAO;
 import data_access_object.TextDAO;
-import view.CExceptionView;
+import entity.VUser;
 import view.CLoginView;
+import view.CExceptionView;
+import view.CSugangView;
 
 public class CMain {
 
@@ -18,24 +21,30 @@ public class CMain {
 		
 		//start program
 		try {
-			//view
+			//view, component
 			CLoginView loginView = new CLoginView();
 			//control
 			CLoginControl loginControl = new CLoginControl();   //읽은 것을 판단
 			//dao
 			IDAO dao = new TextDAO();
 			
-			//association
+			CSugangView sugangView = new CSugangView();
+			CSugangControl sugangControl = new CSugangControl();
+	
+			
+			//association연결함
 			loginView.setControl(loginControl);
 			loginControl.setDao(dao);
-			loginView.login();
+			
+			sugangView.setControl(sugangControl);
+			sugangControl.setDao(dao);
+			
+			
+			//시작점을 찾아 호출(start program)
+			VUser vUser = loginView.login();
+			sugangView.sugangSinCheong();
 		} catch (Exception e){
 			CExceptionView.processException(e);
 		}
-		
-		  
-		
-		//이게 웹페이지가 됨.
 	}
-
 }

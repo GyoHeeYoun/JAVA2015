@@ -3,6 +3,7 @@ package data_access_object;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
+import java.util.Vector;
 
 import entity.CEntity;
 
@@ -40,5 +41,11 @@ public class TextDAO implements IDAO{
 	public void write(Scanner scanner) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public Vector<CEntity> readAll() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }
