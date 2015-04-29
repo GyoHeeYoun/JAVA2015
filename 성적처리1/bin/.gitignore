@@ -1,7 +1,6 @@
-/entity/
-/view/
 /control/
+/entity/
 /data_access_object/
-/member.txt
+/view/
 /exception/
 /main/

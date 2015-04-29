@@ -1,5 +1,6 @@
 package entity;
 
+import java.io.BufferedWriter;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
 
@@ -17,13 +18,14 @@ public class CGangjwa extends CEntity {
 	@Override
 	public void read(Scanner scanner) throws NoSuchElementException, IllegalStateException{
 		// TODO Auto-generated method stub
-
+		ID = scanner.next();
+		name = scanner.next();
 	}
-
+	
 	@Override
-	public void write(Scanner scanner) {
+	public void write(BufferedWriter bufferWriter) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 }

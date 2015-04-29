@@ -1,8 +1,8 @@
 package main;
 
 
+import control.CGangjwaControl;
 import control.CLoginControl;
-import control.CSugangControl;
 import data_access_object.IDAO;
 import data_access_object.TextDAO;
 import entity.VUser;
@@ -29,20 +29,20 @@ public class CMain {
 			IDAO dao = new TextDAO();
 			
 			CSugangView sugangView = new CSugangView();
-			CSugangControl sugangControl = new CSugangControl();
+			CGangjwaControl gangjwaControl = new CGangjwaControl();
 	
 			
 			//association연결함
 			loginView.setControl(loginControl);
 			loginControl.setDao(dao);
 			
-			sugangView.setControl(sugangControl);
-			sugangControl.setDao(dao);
+			sugangView.setControl(gangjwaControl);
+			gangjwaControl.setDao(dao);
 			
 			
 			//시작점을 찾아 호출(start program)
 			VUser vUser = loginView.login();
-			sugangView.sugangSinCheong();
+			sugangView.sugangSinCheong(vUser);
 		} catch (Exception e){
 			CExceptionView.processException(e);
 		}
