@@ -1,4 +1,4 @@
-package entity;
+package valueObject;
 
 public class VUser {
 	public enum ELoginResult {success, idError, passwordError, fileNotFound};

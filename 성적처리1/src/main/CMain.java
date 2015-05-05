@@ -1,13 +1,15 @@
 package main;
 
 
+import java.util.Scanner;
+
 import control.CGangjwaControl;
 import control.CLoginControl;
 import data_access_object.IDAO;
 import data_access_object.TextDAO;
-import entity.VUser;
-import view.CLoginView;
+import valueObject.VUser;
 import view.CExceptionView;
+import view.CMainView;
 import view.CSugangView;
 
 public class CMain {
@@ -21,28 +23,32 @@ public class CMain {
 		
 		//start program
 		try {
+			Scanner scanner = new Scanner(System.in);
+			/*
 			//view, component
-			CLoginView loginView = new CLoginView();
+			CMainView mainView = new CMainView();
 			//control
 			CLoginControl loginControl = new CLoginControl();   //읽은 것을 판단
 			//dao
 			IDAO dao = new TextDAO();
 			
+			//association연결함
+			mainView.setControl(loginControl);
+			loginControl.setDao(dao);
+			
+			//VUser vUser = mainView.login();
+			//
 			CSugangView sugangView = new CSugangView();
 			CGangjwaControl gangjwaControl = new CGangjwaControl();
-	
-			
-			//association연결함
-			loginView.setControl(loginControl);
-			loginControl.setDao(dao);
 			
 			sugangView.setControl(gangjwaControl);
 			gangjwaControl.setDao(dao);
 			
 			
 			//시작점을 찾아 호출(start program)
-			VUser vUser = loginView.login();
-			sugangView.sugangSinCheong(vUser);
+			*/
+			CMainView mainView = new CMainView();
+			mainView.show(scanner);
 		} catch (Exception e){
 			CExceptionView.processException(e);
 		}

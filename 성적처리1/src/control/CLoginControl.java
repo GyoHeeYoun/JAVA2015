@@ -2,10 +2,10 @@ package control;
 
 import java.io.IOException;
 
+import valueObject.VLogin;
+import valueObject.VUser;
+import valueObject.VUser.ELoginResult;
 import entity.CUser;
-import entity.VLogin;
-import entity.VUser;
-import entity.VUser.ELoginResult;
 import exception.PasswordNotMatchException;
 import exception.UserIDNotFoundException;
 
